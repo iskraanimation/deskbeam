@@ -1,0 +1,38 @@
+[package]
+name = "deskbeam-call"
+description = "DeskBeam's calls: setup frames, audio packets, jitter buffer, Opus, echo cancellation and the audio devices"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]
+anyhow = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+tokio = { workspace = true }
+tracing = { workspace = true }
+# Pure-Rust Opus (a port of libopus 1.6) and WebRTC's audio processing (echo
+# cancellation, noise suppression, gain control): no C libraries to build.
+opus1 = "0.3"
+sonora = "0.3"
+# The microphone and speakers; the version rodio (the app's sounds) uses.
+cpal = "0.18"
+# Video: H.264 through Cisco's OpenH264, built from source by the crate (BSD-2). See
+# NOTICE for the patent note.
+openh264 = "0.9"
+# Screen sharing: displays and windows (Apache-2.0).
+xcap = "0.9"
+
+# The camera (Apache-2.0), with each system's own capture only.
+[target.'cfg(target_os = "macos")'.dependencies]
+nokhwa = { version = "0.10", features = ["input-avfoundation"] }
+# Asking for the Screen Recording permission (the version xcap uses).
+objc2-core-graphics = { version = "0.3", default-features = false, features = ["std", "CGWindow"] }
+[target.'cfg(target_os = "windows")'.dependencies]
+nokhwa = { version = "0.10", features = ["input-msmf"] }
+[target.'cfg(target_os = "linux")'.dependencies]
+nokhwa = { version = "0.10", features = ["input-v4l"] }

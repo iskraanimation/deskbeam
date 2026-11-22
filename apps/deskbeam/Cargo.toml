@@ -1,0 +1,54 @@
+[package]
+name = "deskbeam"
+description = "DeskBeam: remote desktop, file sharing and chat between paired devices"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]
+deskbeam-engine = { workspace = true }
+deskbeam-store = { workspace = true }
+anyhow = { workspace = true }
+# wgpu draws by default; OpenGL (glow) is the fallback for GPUs wgpu fails on.
+eframe = { workspace = true, features = ["default_fonts", "wgpu", "glow", "accesskit", "wayland", "x11"] }
+# SVG icons (Lucide), drawn through egui's image loaders.
+egui_extras = { version = "0.36", default-features = false, features = ["svg"] }
+tokio = { workspace = true }
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }
+# Start at login (plan §3.1b).
+auto-launch = "0.5"
+# System notifications. DashBeam used the same crate.
+notify-rust = "4.18"
+# The composer's emoji picker: Unicode's emoji, names and groups.
+emojis = "0.9"
+# Pasting a picture into a chat: the clipboard and PNG writing, the versions and features
+# eframe already brings in.
+arboard = { version = "3.7", default-features = false, features = ["image-data"] }
+image = { version = "0.25", default-features = false, features = ["png"] }
+# Message and ring sounds: playback of WAV, MP3, OGG and FLAC.
+rodio = { version = "0.23", default-features = false, features = ["playback", "wav", "mp3", "vorbis", "flac"] }
+# File and folder pickers, as Iskra uses.
+rfd = "0.17"
+
+# Message toasts tagged by chat, so they can be removed once it is read (`notify.rs`).
+# The same version notify-rust's Windows backend already brings in.
+[target.'cfg(target_os = "windows")'.dependencies]
+windows = { version = "0.62", features = ["Data_Xml_Dom", "UI_Notifications"] }
+
+# The tray. Linux's needs GTK on a thread of its own, which comes later.
+[target.'cfg(any(target_os = "macos", target_os = "windows"))'.dependencies]
+tray-icon = { version = "0.25", default-features = false }
+
+# Reads the bundled emoji font in a test; the version egui already uses.
+[dev-dependencies]
+skrifa = "0.44"
+tempfile = { workspace = true }
+
+# The icon and the name in `deskbeam.exe`, on Windows; see `build.rs`.
+[build-dependencies]
+winresource = "0.1"

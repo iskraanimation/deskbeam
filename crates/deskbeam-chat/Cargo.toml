@@ -1,0 +1,19 @@
+[package]
+name = "deskbeam-chat"
+description = "DeskBeam's messaging wire format: signed messages and groups, frames, ordering"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]
+anyhow = { workspace = true }
+data-encoding = "2.8.0"
+iroh = { workspace = true }
+rand = "0.10"
+serde = { workspace = true }
+serde_json = { workspace = true }
+tokio = { workspace = true }

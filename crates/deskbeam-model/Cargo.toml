@@ -1,0 +1,16 @@
+[package]
+name = "deskbeam-model"
+description = "DeskBeam's plain data types: devices, permissions, node status, snapshots"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]
+serde = { workspace = true }
+
+[dev-dependencies]
+serde_json = { workspace = true }

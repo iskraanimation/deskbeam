@@ -1,0 +1,23 @@
+[package]
+name = "deskbeam-cli"
+description = "DeskBeam without a window: run its engine, send it commands, watch its events"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[lints]
+workspace = true
+
+[[bin]]
+name = "deskbeam-cli"
+path = "src/main.rs"
+
+[dependencies]
+deskbeam-engine = { workspace = true }
+deskbeam-store = { workspace = true }
+anyhow = { workspace = true }
+clap = { workspace = true }
+serde_json = { workspace = true }
+tokio = { workspace = true }
+tracing-subscriber = { workspace = true }

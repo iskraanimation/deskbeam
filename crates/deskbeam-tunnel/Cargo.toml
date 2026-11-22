@@ -1,0 +1,19 @@
+[package]
+name = "deskbeam-tunnel"
+description = "TCP port forwarding over iroh QUIC streams: DeskBeam's remote-desktop tunnel"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]
+anyhow = { workspace = true }
+iroh = { workspace = true }
+tokio = { workspace = true }
+tracing = { workspace = true }
+
+[dev-dependencies]
+tokio = { workspace = true }

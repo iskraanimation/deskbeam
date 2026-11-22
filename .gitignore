@@ -1,0 +1,30 @@
+# Rust build output
+/target
+/target.old
+**/target
+
+# Self-hosted relay and discovery config (per-deployment values; may contain secrets)
+infra/relay/iroh-relay.conf
+infra/dns/config.toml
+
+# Environment files
+.env
+.env.*
+
+# Claude Code project notes (kept local)
+.claude/
+
+# Editors
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+._*
+Thumbs.db
+
+# Logs
+*.log
+logs/

@@ -1,0 +1,80 @@
+DeskBeam
+Licensed under the GNU Affero General Public License v3.0 only (see LICENSE).
+
+This product includes software from the following projects.
+
+DashBeam
+  https://github.com/tonyantony300/dashbeam
+  Copyright (c) Tony Antony and DashBeam contributors
+  License: AGPL-3.0-only
+  Used in: crates/deskbeam-protocol, crates/deskbeam-net, the integration tests in
+  crates/deskbeam-engine/tests, and infra/. Taken from upstream commit
+  69179fb69cb6d392de18e9e9d59a89645f099bf5; DashBeam's commit history is not
+  carried over.
+
+iroh-lan
+  https://github.com/rustonbsd/iroh-lan
+  Copyright (c) 2025 fun with rust y2
+  License: MIT
+  Used in: crates/deskbeam-lan (LAN mode), which ports its packet forwarding over
+  iroh, link reconnecting and network adapter setup to iroh 1.x. Taken from upstream
+  commit 6eb7ddb055763613f957e9ff2a5a2eb967d80958. The MIT license text is kept in
+  crates/deskbeam-lan/LICENSE-MIT-iroh-lan.
+
+Wintun
+  https://www.wintun.net
+  Copyright (c) WireGuard LLC
+  License: Wintun Prebuilt Binaries License (redistributed unmodified)
+  Used in: the Windows installer and .zip, which ship wintun.dll next to
+  deskbeam.exe for LAN mode, together with its license as wintun-LICENSE.txt.
+  DeskBeam uses it only through its published API (wintun.h), via tun-rs.
+
+Inter
+  https://github.com/rsms/inter
+  Copyright (c) 2016 The Inter Project Authors
+  License: SIL Open Font License 1.1
+  Used in: apps/deskbeam/assets/fonts (Inter 4.1, Regular and SemiBold,
+  unmodified), the window's text. The license is kept as Inter-LICENSE.txt there.
+
+Noto Emoji
+  https://github.com/googlefonts/noto-emoji
+  Copyright 2013 Google LLC
+  License: SIL Open Font License 1.1
+  Used in: apps/deskbeam/assets/fonts/NotoEmoji.ttf (the monochrome variable font
+  NotoEmoji[wght].ttf from github.com/google/fonts, unmodified), the window's emoji.
+  The license is kept as NotoEmoji-LICENSE.txt there.
+
+emojis (Rust crate) and Unicode emoji data
+  https://github.com/rossmacarthur/emojis
+  License: MIT OR Apache-2.0, with Unicode's emoji data under the Unicode License v3
+  Used in: the composer's emoji picker (names, groups, shortcodes).
+
+Sounds
+  apps/deskbeam/assets/sounds/message.wav and ring.wav are DeskBeam's own,
+  synthesized for it (no recordings or samples from elsewhere), under DeskBeam's
+  license. Chosen sounds are read with rodio and Symphonia (MPL-2.0).
+
+Lucide
+  https://lucide.dev
+  Copyright (c) Lucide Contributors 2022; portions Copyright (c) Cole Bemis
+  2013-2022 as part of Feather (MIT)
+  License: ISC
+  Used in: apps/deskbeam/assets/icons (from lucide-static 0.460.0), the window's
+  icons. The stroke colour is set to white and the stroke width to 1.5 so the
+  window can tint them; transfer.svg is DeskBeam's own, drawn in the same style.
+  The license is kept as LICENSE there.
+
+OpenH264 (through the openh264 Rust crate)
+  https://github.com/cisco/openh264 and https://github.com/ralfbiedert/openh264-rs
+  Copyright (c) 2013, Cisco Systems
+  License: BSD-2-Clause
+  Used in: crates/deskbeam-call (video in calls), built from source by the crate.
+  Patent note: H.264 is covered by patents. Cisco pays the royalties only for its
+  own prebuilt OpenH264 binaries downloaded from Cisco; DeskBeam builds OpenH264
+  from source, so its copy is not covered by Cisco's licence. Whoever distributes
+  DeskBeam builds is responsible for that in their country.
+
+xcap (Rust crate)
+  https://github.com/nashaofu/xcap
+  License: Apache-2.0
+  Used in: crates/deskbeam-call (screen sharing in calls: displays and windows).
